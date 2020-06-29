@@ -9,12 +9,38 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var notes = ["hello", "this", "is", "a", "array"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 
-
+    @IBAction func didTapAddButton(_ sender: Any) {
+        print("add")
+    }
+    
 }
 
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return notes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        let note = notes[indexPath.row]
+        cell.textLabel?.text = note
+        
+        return cell
+        
+    }
+    
+    
+}
