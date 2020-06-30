@@ -79,6 +79,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.selectionStyle = .none
+        
         let note = notes[indexPath.row]
         cell.textLabel?.text = note.body
         cell.textLabel?.numberOfLines = 0
