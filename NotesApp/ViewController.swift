@@ -79,13 +79,50 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        
         cell.selectionStyle = .none
         
         let note = notes[indexPath.row]
+        
         cell.textLabel?.text = note.body
         cell.textLabel?.numberOfLines = 0
         
         return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        let note = notes[indexPath.row]
+//        print(note.body)
+        
+        let alert = UIAlertController(title: "Edit note", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = note.body
+        }
+        
+        let updateAction = UIAlertAction(title: "Update", style: .default) { (_) in
+            guard
+                let updatedNoteBody = alert.textFields?.first?.text,
+                let appDelegate =  UIApplication.shared.delegate as? AppDelegate
+                else { return }
+            
+            note.body = updatedNoteBody
+            appDelegate.saveContext()
+            self.loadNotes()
+            
+           
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(updateAction)
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+                       
+                   }
         
     }
     
