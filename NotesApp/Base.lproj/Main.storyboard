@@ -72,6 +72,9 @@
                         <viewLayoutGuide key="safeArea" id="dGD-N1-9P0"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Note" largeTitleDisplayMode="always" id="m78-yx-ZYJ"/>
+                    <connections>
+                        <outlet property="noteTextView" destination="zRb-6a-cjA" id="R6D-yt-iaH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2mn-jd-tGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

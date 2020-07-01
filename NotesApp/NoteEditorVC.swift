@@ -9,13 +9,37 @@
 import UIKit
 
 class NoteEditorVC: UIViewController {
+    
+    @IBOutlet weak var noteTextView: UITextView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .white
+        
+        let doneBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        
+        navigationItem.rightBarButtonItem = doneBarButtonItem
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        noteTextView.becomeFirstResponder()
+    }
 
- 
+    @objc func didTapDone(){
+        print("done")
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let newNote = Note(context: context)
+        newNote.body = noteTextView.text
+        
+        appDelegate.saveContext()
+        
+        navigationController?.popViewController(animated: true)
+    }
 
 }

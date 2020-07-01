@@ -21,6 +21,11 @@ class ViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         loadNotes()
     }
     
