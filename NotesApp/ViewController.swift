@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.dataSource = self
         tableView.delegate = self
         loadNotes()
@@ -43,29 +44,32 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapAddButton(_ sender: Any) {
-        let alert = UIAlertController(title: "Add note", message: nil, preferredStyle: .alert)
-        alert.addTextField()
         
-        let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
-            
-            guard let noteBody = alert.textFields?.first?.text,
-                let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                else { return }
-            
-            let context = appDelegate.persistentContainer.viewContext
-            
-            let newNote = Note(context: context)
-            newNote.body = noteBody
-           
-            appDelegate.saveContext()
-            
-            self.notes.append(newNote)
-            self.tableView.reloadData()
-            
-        }
+        performSegue(withIdentifier: "segue.Main.notesListToNoteEditor", sender: nil)
         
-        alert.addAction(saveAction)
-        present(alert, animated: true)
+//        let alert = UIAlertController(title: "Add note", message: nil, preferredStyle: .alert)
+//        alert.addTextField()
+        
+//        let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
+//
+//            guard let noteBody = alert.textFields?.first?.text,
+//                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//                else { return }
+//
+//            let context = appDelegate.persistentContainer.viewContext
+//
+//            let newNote = Note(context: context)
+//            newNote.body = noteBody
+//
+//            appDelegate.saveContext()
+//
+//            self.notes.append(newNote)
+//            self.tableView.reloadData()
+//
+//        }
+        
+//        alert.addAction(saveAction)
+//        present(alert, animated: true)
     }
     
 }

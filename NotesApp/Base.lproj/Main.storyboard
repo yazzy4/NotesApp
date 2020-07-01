@@ -39,11 +39,43 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ArK-eW-Lj5" id="C4q-OQ-jad"/>
+                        <segue destination="hPn-Yb-Ppi" kind="show" identifier="segue.Main.notesListToNoteEditor" id="f68-c2-w0A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071.2" y="115.59220389805098"/>
+            <point key="canvasLocation" x="1066" y="116"/>
+        </scene>
+        <!--New Note-->
+        <scene sceneID="kCj-13-zUD">
+            <objects>
+                <viewController id="hPn-Yb-Ppi" customClass="NoteEditorVC" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TeW-9Q-rht">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zRb-6a-cjA">
+                                <rect key="frame" x="16" y="96" width="343" height="571"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dGD-N1-9P0" firstAttribute="bottom" secondItem="zRb-6a-cjA" secondAttribute="bottom" id="EOb-DT-S5x"/>
+                            <constraint firstItem="zRb-6a-cjA" firstAttribute="leading" secondItem="dGD-N1-9P0" secondAttribute="leading" constant="16" id="Egf-fT-JPB"/>
+                            <constraint firstItem="dGD-N1-9P0" firstAttribute="trailing" secondItem="zRb-6a-cjA" secondAttribute="trailing" constant="16" id="MY0-ea-c8f"/>
+                            <constraint firstItem="zRb-6a-cjA" firstAttribute="top" secondItem="dGD-N1-9P0" secondAttribute="top" id="MsX-iF-mXY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dGD-N1-9P0"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Note" largeTitleDisplayMode="always" id="m78-yx-ZYJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2mn-jd-tGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852" y="115.59220389805098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jzT-Lw-dl3">
@@ -54,6 +86,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
