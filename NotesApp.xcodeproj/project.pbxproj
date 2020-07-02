@@ -11,6 +11,7 @@
 		917C210924AA8EAB00DFA659 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917C210724AA8EAB00DFA659 /* Note+CoreDataClass.swift */; };
 		917C210A24AA8EAB00DFA659 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917C210824AA8EAB00DFA659 /* Note+CoreDataProperties.swift */; };
 		9191F0DC24AD298200479020 /* NoteEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191F0DB24AD298200479020 /* NoteEditorVC.swift */; };
+		9191F0E024AE632500479020 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191F0DF24AE632500479020 /* NoteCell.swift */; };
 		9193A85C24A52C6D00DF77E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193A85B24A52C6D00DF77E3 /* AppDelegate.swift */; };
 		9193A85E24A52C6D00DF77E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193A85D24A52C6D00DF77E3 /* SceneDelegate.swift */; };
 		9193A86024A52C6D00DF77E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193A85F24A52C6D00DF77E3 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 		917C210724AA8EAB00DFA659 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		917C210824AA8EAB00DFA659 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		9191F0DB24AD298200479020 /* NoteEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorVC.swift; sourceTree = "<group>"; };
+		9191F0DF24AE632500479020 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		9193A85824A52C6D00DF77E3 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9193A85B24A52C6D00DF77E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9193A85D24A52C6D00DF77E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				9193A85D24A52C6D00DF77E3 /* SceneDelegate.swift */,
 				9193A85F24A52C6D00DF77E3 /* ViewController.swift */,
 				9191F0DB24AD298200479020 /* NoteEditorVC.swift */,
+				9191F0DF24AE632500479020 /* NoteCell.swift */,
 				9193A86124A52C6D00DF77E3 /* Main.storyboard */,
 				9193A86424A52C6F00DF77E3 /* Assets.xcassets */,
 				9193A86624A52C6F00DF77E3 /* LaunchScreen.storyboard */,
@@ -157,6 +160,7 @@
 				917C210624AA8B8500DFA659 /* Notes.xcdatamodeld in Sources */,
 				9191F0DC24AD298200479020 /* NoteEditorVC.swift in Sources */,
 				917C210A24AA8EAB00DFA659 /* Note+CoreDataProperties.swift in Sources */,
+				9191F0E024AE632500479020 /* NoteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

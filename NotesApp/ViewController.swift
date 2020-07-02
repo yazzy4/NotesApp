@@ -89,14 +89,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        
-        cell.selectionStyle = .none
+//        let cell = UITableViewCell()
+//        cell.selectionStyle = .none
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell") as? NoteCell else { return UITableViewCell() }
         
         let note = notes[indexPath.row]
         
-        cell.textLabel?.text = note.body
-        cell.textLabel?.numberOfLines = 0
+        cell.populate(with: note)
+    
         
         return cell
         
