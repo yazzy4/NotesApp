@@ -12,6 +12,7 @@ class NoteEditorVC: UIViewController {
     
     @IBOutlet weak var noteTextView: UITextView!
     
+    var note: Note?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,10 @@ class NoteEditorVC: UIViewController {
         let doneBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
         
         navigationItem.rightBarButtonItem = doneBarButtonItem
+        
+        if let note = self.note {
+            noteTextView.text = note.body
+        }
         
     }
     

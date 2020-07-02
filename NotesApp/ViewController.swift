@@ -22,6 +22,8 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+      
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,37 +105,72 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
         let note = notes[indexPath.row]
-//        print(note.body)
+
+        performSegue(withIdentifier: "segue.Main.notesListToNoteEditor", sender: note)
         
-        let alert = UIAlertController(title: "Edit note", message: nil, preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.text = note.body
-        }
-        
-        let updateAction = UIAlertAction(title: "Update", style: .default) { (_) in
-            guard
-                let updatedNoteBody = alert.textFields?.first?.text,
-                let appDelegate =  UIApplication.shared.delegate as? AppDelegate
-                else { return }
-            
-            note.body = updatedNoteBody
-            appDelegate.saveContext()
-            self.loadNotes()
-            
-           
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addAction(cancelAction)
-        alert.addAction(updateAction)
-        
-        DispatchQueue.main.async {
-            self.present(alert, animated: true)
-                       
-                   }
+//        let alert = UIAlertController(title: "Edit note", message: nil, preferredStyle: .alert)
+//        alert.addTextField { (textField) in
+//            textField.text = note.body
+//        }
+//
+//        let updateAction = UIAlertAction(title: "Update", style: .default) { (_) in
+//            guard
+//                let updatedNoteBody = alert.textFields?.first?.text,
+//                let appDelegate =  UIApplication.shared.delegate as? AppDelegate
+//                else { return }
+//
+//            note.body = updatedNoteBody
+//            appDelegate.saveContext()
+//            self.loadNotes()
+//
+//
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+//
+//        alert.addAction(cancelAction)
+//        alert.addAction(updateAction)
+//
+//        DispatchQueue.main.async {
+//            self.present(alert, animated: true)
+//
+//        }
         
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let note = notes[indexPath.row]
+        
+        context.delete(note)
+        appDelegate.saveContext()
+        
+        do {
+            try note.validateForDelete()
+            context.delete(note)
+            try context.save()
+            
+            notes.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if let noteEditorVC = segue.destination as? NoteEditorVC, let note = sender as? Note {
+            
+            noteEditorVC.note = note
+        }
+    }
 }
