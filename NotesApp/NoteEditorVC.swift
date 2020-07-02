@@ -13,6 +13,8 @@ class NoteEditorVC: UIViewController {
     @IBOutlet weak var noteTextView: UITextView!
     
     var note: Note?
+    
+    var userDidSave: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,7 @@ class NoteEditorVC: UIViewController {
         
         if let note = self.note {
             noteTextView.text = note.body
+            navigationItem.title = "Edit Note"
         }
         
     }
@@ -32,27 +35,47 @@ class NoteEditorVC: UIViewController {
         super.viewDidAppear(animated)
         noteTextView.becomeFirstResponder()
     }
+    
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if userDidSave == false  {
+            
+            saveNote()
+            
+        }
+    }
+
+    func saveNote() {
+        guard
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+                noteTextView.text.isEmpty == false
+            else { return }
+          let context = appDelegate.persistentContainer.viewContext
+          
+          if let note = self.note {
+              
+              note.body = noteTextView.text
+              
+              } else {
+              
+              let newNote = Note(context: context)
+              newNote.body = noteTextView.text
+          }
+          
+          appDelegate.saveContext()
+    }
+    
+    
     @objc func didTapDone(){
         print("done")
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
+        saveNote()
         
-        if let note = self.note {
-            
-            note.body = noteTextView.text
-            
-            } else {
-            
-            let newNote = Note(context: context)
-            newNote.body = noteTextView.text
-        }
+        userDidSave = true
         
-        appDelegate.saveContext()
-        
-      
-        navigationController?.popViewController(animated: true)
+      navigationController?.popViewController(animated: true)
     }
 
 }
