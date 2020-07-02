@@ -39,11 +39,19 @@ class NoteEditorVC: UIViewController {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         
-        let newNote = Note(context: context)
-        newNote.body = noteTextView.text
+        if let note = self.note {
+            
+            note.body = noteTextView.text
+            
+            } else {
+            
+            let newNote = Note(context: context)
+            newNote.body = noteTextView.text
+        }
         
         appDelegate.saveContext()
         
+      
         navigationController?.popViewController(animated: true)
     }
 
