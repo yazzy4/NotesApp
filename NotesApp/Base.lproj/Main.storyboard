@@ -121,6 +121,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Note" largeTitleDisplayMode="always" id="m78-yx-ZYJ"/>
                     <connections>
+                        <outlet property="categoryTextField" destination="tXW-UV-23h" id="QlX-Zx-3m3"/>
                         <outlet property="noteTextView" destination="zRb-6a-cjA" id="R6D-yt-iaH"/>
                     </connections>
                 </viewController>

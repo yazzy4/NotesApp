@@ -149,7 +149,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         appDelegate.saveContext()
         
         do {
-            try note.validateForDelete()
+//            try note.validateForDelete()
+            
             context.delete(note)
             try context.save()
             
