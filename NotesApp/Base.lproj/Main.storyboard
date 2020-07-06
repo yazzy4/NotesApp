@@ -95,19 +95,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zRb-6a-cjA">
-                                <rect key="frame" x="16" y="96" width="343" height="571"/>
+                                <rect key="frame" x="16" y="146" width="343" height="521"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tXW-UV-23h">
+                                <rect key="frame" x="16" y="104" width="343" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="zRb-6a-cjA" firstAttribute="top" secondItem="tXW-UV-23h" secondAttribute="bottom" constant="8" id="6ky-T3-kr8"/>
                             <constraint firstItem="dGD-N1-9P0" firstAttribute="bottom" secondItem="zRb-6a-cjA" secondAttribute="bottom" id="EOb-DT-S5x"/>
                             <constraint firstItem="zRb-6a-cjA" firstAttribute="leading" secondItem="dGD-N1-9P0" secondAttribute="leading" constant="16" id="Egf-fT-JPB"/>
                             <constraint firstItem="dGD-N1-9P0" firstAttribute="trailing" secondItem="zRb-6a-cjA" secondAttribute="trailing" constant="16" id="MY0-ea-c8f"/>
-                            <constraint firstItem="zRb-6a-cjA" firstAttribute="top" secondItem="dGD-N1-9P0" secondAttribute="top" id="MsX-iF-mXY"/>
+                            <constraint firstItem="tXW-UV-23h" firstAttribute="leading" secondItem="dGD-N1-9P0" secondAttribute="leading" constant="16" id="XYy-RK-Yix"/>
+                            <constraint firstItem="tXW-UV-23h" firstAttribute="top" secondItem="dGD-N1-9P0" secondAttribute="top" constant="8" id="sDi-Kz-8a9"/>
+                            <constraint firstItem="dGD-N1-9P0" firstAttribute="trailing" secondItem="tXW-UV-23h" secondAttribute="trailing" constant="16" id="xNT-Iy-rmq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dGD-N1-9P0"/>
                     </view>

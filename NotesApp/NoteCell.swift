@@ -19,7 +19,7 @@ class NoteCell: UITableViewCell {
     }
     
     func populate(with note: Note) {
-        categoryLabel.text = "mock category"
+//        categoryLabel.text = note.category
         noteBodyLabel.text = note.body
     }
  
